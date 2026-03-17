@@ -3,6 +3,7 @@ package com.adrieli.passwordvalidator.controller;
 import com.adrieli.passwordvalidator.dto.PasswordRequest;
 import com.adrieli.passwordvalidator.dto.PasswordResponse;
 import com.adrieli.passwordvalidator.service.PasswordValidationService;
+import jakarta.validation.Valid;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -19,7 +20,7 @@ public class PasswordController {
     }
 
     @PostMapping("/validate")
-    public PasswordResponse validate(@RequestBody PasswordRequest request) {
+    public PasswordResponse validate(@Valid @RequestBody PasswordRequest request) {
 
         boolean valid = service.validatePassword(request.getPassword());
 
